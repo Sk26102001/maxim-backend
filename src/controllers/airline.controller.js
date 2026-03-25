@@ -118,3 +118,32 @@ export const getSingleAirline = async (req, res) => {
         })
     }
 }
+
+
+/**
+ * GET AIRLINE BY CODE
+ */
+export const getAirlineByCode = async (req, res) => {
+    try {
+        const { code } = req.params
+
+        // Find airline by code (case-insensitive since schema has lowercase: true)
+        const airline = await Airline.findOne({ code: code.toLowerCase() })
+
+        if (!airline) {
+            return res.status(404).json({
+                message: "Airline not found with the provided code",
+            })
+        }
+
+        return res.status(200).json({
+            ...airline.toObject(),
+            logo: airline.logo?.replace(/\\/g, "/"),
+        })
+    } catch (error) {
+        return res.status(error.status || 500).json({
+            status: error.status || 500,
+            message: error.message || "Internal server error",
+        })
+    }
+}
