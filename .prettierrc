@@ -1,0 +1,27 @@
+{
+  "semi": false,
+  "printWidth": 180,
+  "tabWidth": 4,
+  "trailingComma": "es5",
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-organize-imports"
+  ],
+  "importOrder": [
+    "^(node:.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/config/(.*)$",
+    "^@/models/(.*)$",
+    "^@/middlewares/(.*)$",
+    "^@/controllers/(.*)$",
+    "^@/routes/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/services/(.*)$",
+    "^@/validators/(.*)$",
+    "",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
